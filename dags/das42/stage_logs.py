@@ -48,7 +48,7 @@ for table in JOB_ARGS["tables"]:
         sql=query_log,
         params={
             "env": ENV,
-            "team_name": TEAM_NAME
+            "team_name": ny
         },
         autocommit=True,
         trigger_rule='all_done',
