@@ -13,7 +13,7 @@ from das42.utils.sql_utils import SqlUtils
 JOB_ARGS = JobConfig.get_config()
 DEFAULTS = JOB_ARGS["default_args"]
 ENV = JOB_ARGS["env_name"]
-TEAM_NAME = JOB_ARGS["ny"]
+TEAM_NAME = JOB_ARGS["team_name"]
 SF_CONN_ID = JOB_ARGS["snowflake_conn_id"]
 SF_ROLE = JOB_ARGS["snowflake"]["role"]
 SF_WAREHOUSE = JOB_ARGS["snowflake"]["warehouse"]
