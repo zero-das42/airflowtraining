@@ -18,6 +18,8 @@ SF_CONN_ID = JOB_ARGS["snowflake_conn_id"]
 SF_ROLE = JOB_ARGS["snowflake"]["role"]
 SF_WAREHOUSE = JOB_ARGS["snowflake"]["warehouse"]
 SF_DATABASE = JOB_ARGS["snowflake"]["database"]
+BUCKET_NAME = JOB_ARGS["aws_rl_bucket_name"]
+S3_CONN_ID = JOB_ARGS["aws_conn_id"]
 
 # create DAG
 DAG = DAG(
@@ -54,5 +56,14 @@ for table in JOB_ARGS["tables"]:
         trigger_rule='all_done',
         dag=DAG
     )
-
-    stage_adlogs_hourly_job >> stage_finish
+    
+   
+# add s3 sensor to check the presence of log files
+    sensor = S3KeySensor(
+        task_id=“s3_key_sensor_task”,
+        bucket_name=BUCKET_NAME,
+        bucket_key=“das42-airflow-training-s3",
+        s3_conn_id=S3_CONN_ID
+    )
+# set the order
+    sensor >> stage_adlogs_hourly_job >> stage_finish
