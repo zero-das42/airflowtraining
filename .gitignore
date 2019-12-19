@@ -1,0 +1,4 @@
+.git
+.env
+airflow_settings.yaml
+dags/das42/__pycache__
