@@ -1,3 +1,7 @@
 .git
 .env
 airflow_settings.yaml
+**/__pycache__
+/dags/das42/__pycache__/*
+.DS_Store
+**/das42/.DS_Store
